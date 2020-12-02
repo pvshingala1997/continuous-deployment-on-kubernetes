@@ -18,7 +18,6 @@ pipeline {
 apiVersion: v1
 kind: Pod
 metadata:
-  namespace: temp
 labels:
   component: ci
 spec:
