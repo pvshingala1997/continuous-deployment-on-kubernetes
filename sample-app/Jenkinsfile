@@ -17,6 +17,7 @@ pipeline {
       yaml """
 apiVersion: v1
 kind: Pod
+namespace: temp
 metadata:
 labels:
   component: ci
@@ -26,6 +27,11 @@ spec:
   containers:
   - name: golang
     image: golang:1.10
+    command:
+    - cat
+    tty: true
+  - name: kubectl
+    image: gcr.io/cloud-builders/kubectl
     command:
     - cat
     tty: true
