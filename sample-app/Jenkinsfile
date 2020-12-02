@@ -13,12 +13,12 @@ pipeline {
   agent {
     kubernetes {
       label 'sample-app'
-      namespace 'temp'
       defaultContainer 'jnlp'
       yaml """
 apiVersion: v1
 kind: Pod
 metadata:
+  namespace: temp
 labels:
   component: ci
 spec:
