@@ -7,7 +7,7 @@ pipeline {
     CLUSTER = ""
     CLUSTER_ZONE = ""
     IMAGE_TAG = "gcr.io/${PROJECT}/${APP_NAME}:${env.BRANCH_NAME}.${env.BUILD_NUMBER}"
-    JENKINS_CRED = " "
+    JENKINS_CRED = ""
   }
 
   agent {
@@ -26,11 +26,6 @@ spec:
   containers:
   - name: golang
     image: golang:1.10
-    command:
-    - cat
-    tty: true
-  - name: gcloud
-    image: gcr.io/cloud-builders/gcloud
     command:
     - cat
     tty: true
