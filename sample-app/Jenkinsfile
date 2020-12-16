@@ -13,7 +13,6 @@ pipeline {
   agent {
     kubernetes {
       label 'sample-app'
-      defaultContainer 'jnlp'
       yaml """
 apiVersion: v1
 kind: Pod
@@ -24,6 +23,9 @@ spec:
   # Use service account that can deploy to all namespaces
   serviceAccountName: cd-jenkins
   containers:
+  - name: jnlp
+    image: 'jenkins/inbound-agent:4.3-4-alpine'
+    args: ['\$(JENKINS_SECRET)', '\$(JENKINS_NAME)']
   - name: golang
     image: golang:1.10
     command:
